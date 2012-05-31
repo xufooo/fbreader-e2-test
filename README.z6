@@ -1,0 +1,50 @@
+It is fbreader-0.7.4g + patches for A780/E680i + my modifications for Z6.
+
+I am sorry, the source tree is not combed. I just does not have time
+to comb it. All that I can say: it compiles out of the box, provided
+you have z6-toolchain-v3, z6-qt-2.3.8-v3.1 and z6-ezx-v3 are installed.
+And it works. Some menus are ugly, some views are useless (f.e. book
+list requires mouse/stylus to select books), but all the features
+which I used at my notebook work perfectly.
+
+WARNING: it will abort when started without FBDIR set in environment.
+I decided not to fix this flaw. FBReader needs default directory
+to store config files. We do not have any reasonable default location on Z6,
+so that abort is quite reasonable behaviour.
+
+Initial configuration can be not so obvious, so I collected
+precompiled binary version and required configuration files from
+my handset in z6-fbreader-0.7.4g-v3.1-bin.tar.bz2. Unpack it to /mmc/mmca1.
+
+It will start in fullscreen mode with blank screen, because you do not
+have any books in the library. Press Enter (central key) to enter
+menu mode (press the same key again to return to fullscreen mode).
+Press Menu -> Open Book. Navigate file system to find a book to read,
+then Done -> Accept. Enjoy!
+
+I setup the following default keymap:
+
+- Enter/Central key -> toggle fullscreen mode / menu mode
+- Music		    -> Rotate screen
+- Up/Down (Left/Right when rotated) -> PgUp/PgDn
+- Left/Right (Up/Down when rotated) -> Undo/Redo
+- Right SoftKey	in Menu Mode    -> Quit
+- Right Softkey in Fullscreen	-> Recent Books (Undo to return)
+- Left SoftKey	in Menu Mode    -> Menu
+- Left SoftKey  in FullScreen	-> Library (Undo to return)
+- Call		    -> Book Contents (Undo to return)
+- Volume Up/Down    -> Increase/Decrease font size
+
+It can be changed (among lost oÁ another options) via Menu -> Config.
+
+Some menus are a little ugly and controls without stylus/mouse
+can be quite inconvenient, but all of the options really work.
+
+
+Changelog.
+
+v3 -> v3.1
+
+- backported coverpage fixup from 0.7.4k. Of course, it is better
+  to do a forward port instead, but I am lazy.
+

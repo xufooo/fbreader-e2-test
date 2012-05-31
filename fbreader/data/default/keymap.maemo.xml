@@ -1,0 +1,11 @@
+<keymap>
+	<binding key="&lt;ScrollKey Left&gt;" action="3"/>
+	<binding key="&lt;ScrollKey Right&gt;" action="4"/>
+	<binding key="&lt;ZoomKey +&gt;" action="9"/>
+	<binding key="&lt;ZoomKey -&gt;" action="10"/>
+	<binding key="&lt;ScrollKey Down&gt;" action="11"/>
+	<binding key="&lt;ScrollKey Up&gt;" action="12"/>
+	<binding key="&lt;Escape&gt;" action="18"/>
+	<binding key="&lt;FullScreen&gt;" action="22"/>
+  <binding key="&lt;ScrollKey Center&gt;" action="27"/>
+</keymap>

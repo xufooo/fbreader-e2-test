@@ -1,0 +1,51 @@
+This is very short description of FBReader build procedure for 
+Motorola EZX platform (Motorola A780/E680i mobile phone).
+
+1. Compiler.
+
+The best recommendation is to download and build the ezx-crosstool package from:
+http://lsb.blogdns.net/ezx-crosstool/
+
+2. Libraries.
+
+FBReader for EZX requires
+  ** expat >= 1.95.8 -- library for XML parsing (http://expat.sourceforge.net)
+  ** enca >= 1.9 -- encoding detection library (http://trific.ath.cx/software/enca/)
+  ** bzip2 >= 1.0.3 -- a block-sorting file compressor (http://www.bzip.org)
+  ** UI library -- Qt library version 2.3.6 and Motorola EZX library
+     You have to download samr7's unofficial EZX development kit from:
+     http://lsb.blogdns.net/ezx-devkit/
+     Read the instructions carefully and then apply my patch file (dev-ezx-0.2.0.diff)
+     included in FBReader root directory. 
+     (FBReader root directory == directory containing this file.)
+
+3. How to configure.
+
+Before building FBReader for EZX, you should check (and may be edit) 2 files:
+  ** makefiles/target.mk
+     In this file you should define 3 variables:
+       TARGET_ARCH -- target platform for building FBReader
+       UI_TYPE -- UI library
+       TARGET_STATUS -- "release", "debug" or "profile". "release" is
+         reasonable choice for almost all users.
+
+     Pairs for TARGET_ARCH + UI_TYPE for EZX are:
+        TARGET_ARCH = ezx                   UI_TYPE = ezx
+
+  ** makefiles/arch/ezx.mk
+     This file defines compiler name and location, headers and libraries
+     locations, compilation flags, etc.
+
+4. How to build.
+
+Just type 'make' in FBReader root directory.
+
+5. How to install.
+
+If you want to create package for EZX
+  ** Prepare 64x43 pixels png icons and save it as fbreader-b.png
+  ** Prepare 32x24 pixels png icons and save it as fbreader-s.png
+     Save both above icons in fbreader/ezx directory and then run
+     'make package' in FBReader root directory.
+
+For more details, read official FBReader's build instructions (README.build).
