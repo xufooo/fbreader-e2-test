@@ -24,6 +24,7 @@
 
 #include "ZLXMLReaderInternal.h"
 #include "../ZLXMLReader.h"
+#include <iostream>/*ooo added*/
 
 static void fCharacterDataHandler(void *userData, const char *text, int len) {
 	if (!((ZLXMLReader*)userData)->isInterrupted()) {
@@ -78,12 +79,16 @@ ZLXMLReaderInternal::~ZLXMLReaderInternal() {
 }
 
 void ZLXMLReaderInternal::init() {
+	std::cout<<"ZLXMLReaderInternal::init()\n";
 	if (!myInitialized) {
+		std::cout<<"!myInitialized\n";
 		myInitialized = true;
 		XML_UseForeignDTD(myParser, XML_TRUE);
 
+		std::cout<<"run here??\n";
 		const std::vector<std::string> &dtds = myReader.externalDTDs();
 		for (std::vector<std::string>::const_iterator it = dtds.begin(); it != dtds.end(); ++it) {
+			std::cout<<"how many times does this appear 1?\n";
 			parseDTD(myParser, *it);
 		}
 

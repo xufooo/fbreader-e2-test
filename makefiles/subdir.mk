@@ -10,7 +10,8 @@ OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES))
 
 .cpp.o:
 	@echo -n "Compiling $@ ..."
-	@$(CC) -MMD -c $(CFLAGS) $(INCLUDE) $<
+#	@$(CXX) -MMD -c $(CFLAGS) $(INCLUDE) $<
+	@$(CXX) -c $(CFLAGS) $(INCLUDE) -o $@ $<
 	@echo " OK"
 
 all: $(OBJECTS)

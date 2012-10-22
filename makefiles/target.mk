@@ -33,6 +33,6 @@ UI_TYPE = ezx
 #UI_TYPE = gtk
 #UI_TYPE = qt
 
-TARGET_STATUS = release
-#TARGET_STATUS = debug
+#TARGET_STATUS = release
+TARGET_STATUS = debug
 #TARGET_STATUS = profile

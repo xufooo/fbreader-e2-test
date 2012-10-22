@@ -30,6 +30,7 @@
 #include "../../bookmodel/BookReader.h"
 #include "../../bookmodel/BookModel.h"
 #include "../../Files.h"
+#include <iostream>/*ooo added*/
 
 std::map<std::string,XHTMLTagAction*> XHTMLReader::ourTagActions;
 
@@ -356,9 +357,11 @@ static std::vector<std::string> EXTERNAL_DTDs;
 
 const std::vector<std::string> &XHTMLReader::externalDTDs() const {
   if (EXTERNAL_DTDs.empty()) {
+	  std::cout<<"XHTMLReader::externalDTDs()\n";
+	  std::cout<<"directoryName:"<<ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter +"formats" + ZLApplication::PathDelimiter + "xhtml"+"\n";
     std::string directoryName =
-      ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter +
-      "formats" + ZLApplication::PathDelimiter + "xhtml";
+//	ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter +"formats" + ZLApplication::PathDelimiter + "xhtml";
+	"./formats" + ZLApplication::PathDelimiter + "xhtml";
     shared_ptr<ZLDir> dtdPath = ZLFile(directoryName).directory();
     if (!dtdPath.isNull()) {
       std::vector<std::string> files;

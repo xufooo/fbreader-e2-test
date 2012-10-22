@@ -35,6 +35,7 @@
 #include "DocDecompressor.h"
 #include "PluckerImages.h"
 #include "../../bookmodel/BookModel.h"
+#include <iostream>
 
 PluckerBookReader::PluckerBookReader(const std::string &filePath, BookModel &model, const std::string &encoding) : BookReader(model), myFilePath(filePath), myFont(FT_REGULAR) {
   myConverter = ZLEncodingConverter::createConverter(encoding);
@@ -481,6 +482,7 @@ void PluckerBookReader::readRecord(size_t recordSize) {
 }
 
 bool PluckerBookReader::readDocument() {
+	std::cout<<"PluckerBookReader::readDocument\n";
   myStream = ZLFile(myFilePath).inputStream();
   if (myStream.isNull() || !myStream->open()) {
     return false;

@@ -23,6 +23,7 @@
 #include <abstract/ZLInputStream.h>
 
 #include "RtfDescriptionReader.h"
+#include <iostream>/*ooo added*/
 
 RtfDescriptionReader::RtfDescriptionReader(BookDescription &description) : RtfReader(description.encoding()), myDescription(description) {
 }
@@ -33,6 +34,7 @@ void RtfDescriptionReader::setEncoding(int code) {
 }
 
 bool RtfDescriptionReader::readDocument(const std::string &fileName) {
+	std::cout<<"RtfDescriptionReader::readDocument\n";
   myDoRead = false;
   bool code = RtfReader::readDocument(fileName);
   if (myDescription.encoding().empty()) {

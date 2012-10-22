@@ -31,6 +31,7 @@
 #include "TeXHyphenator.h"
 #include "HyphenationReader.h"
 #include "../Files.h"
+#include <iostream>/*ooo added*/
 
 Hyphenator &Hyphenator::instance() {
 	if (ourInstance == 0) {
@@ -64,7 +65,9 @@ private:
 };
 
 const std::string TeXHyphenator::PatternZip() {
-	return ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter + "hyphenationPatterns.zip";
+	std::cout<<"maybe here is the key point!\n";
+//	return ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter + "hyphenationPatterns.zip";
+	return "." + ZLApplication::PathDelimiter + "hyphenationPatterns.zip";
 }
 
 void TeXHyphenator::collectLanguages() {
@@ -206,6 +209,7 @@ TeXHyphenator::~TeXHyphenator() {
 }
 
 void TeXHyphenator::load(const std::string &language) {
+	std::cout<<"language:"<<language<<"   myLanguage:"<<myLanguage<<"\n";
 	if (language == myLanguage) {
 		return;
 	}

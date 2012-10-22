@@ -32,6 +32,7 @@
 
 #include "QPaintContext.h"
 #include "../../qt/image/QImageManager.h"
+#include <iostream>/*ooo added*/
 
 QPaintContext::QPaintContext() {
 	myPainter = new QPainter();
@@ -49,6 +50,7 @@ QPaintContext::~QPaintContext() {
 }
 
 void QPaintContext::setSize(int w, int h) {
+	std::cout<<"QPaintContext::setSize\n";
 	if (myPixmap != NULL) {
 		if ((myPixmap->width() != w) || (myPixmap->height() != h)) {
 			myPainter->end();
@@ -62,6 +64,8 @@ void QPaintContext::setSize(int w, int h) {
 		if (myFontIsStored) {
 			myFontIsStored = false;
 			setFont(myStoredFamily, myStoredSize, myStoredBold, myStoredItalic);
+			std::cout<<"setSize--setFont\n";
+			myPainter->setFont(myFont);/*ooo added*/
 		}
 	}
 }
@@ -103,31 +107,33 @@ void QPaintContext::setFont(const std::string &family, int size, bool bold, bool
 		myStoredBold = bold;
 		myStoredItalic= italic;
 	} else {
-		QFont font = myPainter->font();
+	/*	QFont font = myPainter->font(); ooo use myFont instead of this*/
+//		QFont font = myFont;/*next: use myFont instead of QFont font*/
 		bool fontChanged = false;
-
-		if (font.family() != family.c_str()) {
-			font.setFamily(family.c_str());
+/*ooo changed font to myFont*/
+		if (myFont.family() != family.c_str()) {
+			myFont.setFamily(family.c_str());
 			fontChanged = true;
 		}
 
-		if (font.pointSize() != size) {
-			font.setPointSize(size);
+		if (myFont.pointSize() != size) {
+			myFont.setPointSize(size);
 			fontChanged = true;
 		}
 
-		if ((font.weight() != (bold ? QFont::Bold : QFont::Normal))) {
-			font.setWeight(bold ? QFont::Bold : QFont::Normal);
+		if ((myFont.weight() != (bold ? QFont::Bold : QFont::Normal))) {
+			myFont.setWeight(bold ? QFont::Bold : QFont::Normal);
 			fontChanged = true;
 		}
 
-		if (font.italic() != italic) {
-			font.setItalic(italic);
+		if (myFont.italic() != italic) {
+			myFont.setItalic(italic);
 			fontChanged = true;
 		}
 
 		if (fontChanged) {
-		        myPainter->setFont(font);
+/*		        myPainter->setFont(font);ooo comment this to avoid segmentation fault */
+//				myFont = font;/*ooo added*/
 			mySpaceWidth = -1;
 		}
 	}
@@ -166,7 +172,8 @@ int QPaintContext::spaceWidth() const {
 }
 
 int QPaintContext::stringHeight() const {
-	return myPainter->font().pointSize() + 2;
+//	return myPainter->font().pointSize() + 2; ooo fixed myPainter->font may cause sf
+	return myFont.pointSize() + 2;
 }
 
 void QPaintContext::drawString(int x, int y, const char *str, int len) {
@@ -176,7 +183,10 @@ void QPaintContext::drawString(int x, int y, const char *str, int len) {
 		qStr[i] == QChar(0x13,0x20))
 		qStr[i] = QChar('-', 0);
 	}
-	myPainter->drawText(x + leftMargin(), y + topMargin(),0,-1,-1, qStr);
+	std::cout<<"qStr:"<<qStr<<";x+leftMargin:"<<x + leftMargin()<<";y+topMargin:"<<y + topMargin()<<";stringWidth(str,len):"<<stringWidth(str,len)<<";stringHeight():"<<stringHeight()<<"\n";
+//	myPainter->drawText(x + leftMargin(), y + topMargin(),0,-1,-1, qStr);
+	myPainter->drawText(x + leftMargin(), y + topMargin(),stringWidth(str,len),stringHeight()+3,0, qStr);
+//	myPainter->drawText(x + leftMargin(), y + topMargin(), qStr);
 }
 
 void QPaintContext::drawImage(int x, int y, const ZLImageData &image) {

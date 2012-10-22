@@ -43,6 +43,7 @@
 #include "../collection/BookList.h"
 #include "../hyphenation/Hyphenator.h"
 #include "../formats/FormatPlugin.h"
+#include <iostream>/*ooo added*/
 
 static const std::string OPTIONS = "Options";
 static const std::string SEARCH = "Search";
@@ -129,15 +130,19 @@ FBReader::FBReader(ZLPaintContext *context, const std::string& bookToOpen) :
 	}
 
 	if (description.isNull()) {
-		std::string howToStartString = ApplicationDirectory() + PathDelimiter + "help" + PathDelimiter + "HowToStart.fb2";
+		std::string howToStartString = /*ApplicationDirectory()*/ZLApplicationBase::BaseDirectory + PathDelimiter + "help" + PathDelimiter + "HowToStart.fb2";
+//		std::string howToStartString = "./testfile.txt";
 		ZLStringOption bookName(ZLOption::STATE_CATEGORY, STATE, BOOK, howToStartString);
 		description = BookDescription::create(bookName.value());
 
 		if (description.isNull()) {
+			std::cout<<"will BookDescription::create(howToStartString) run?\n";
 			description = BookDescription::create(howToStartString);
 		}
+	std::cout<<"\nnext to openBook\n"<<howToStartString+"\n";
 	}
 	openBook(description);
+	std::cout<<"opened\n";
 
 	addAction(ACTION_SHOW_COLLECTION, new ShowCollectionAction(*this));
 	addAction(ACTION_SHOW_LAST_BOOKS, new ShowRecentBooksListAction(*this));
@@ -302,12 +307,14 @@ void FBReader::openBook(BookDescriptionPtr description) {
 
 void FBReader::openBookInternal(BookDescriptionPtr description) {
 	if (!description.isNull()) {
+		std::cout<<"!description.isNULL()\n";/*ooo added*/
 		myBookTextView->saveState();
 		myContentsView->saveState();
 		if (myModel != 0) {
 			delete myModel;
 		}
 		myModel = new BookModel(description);
+		std::cout<<"description->title():"<<description->title()<<"\ndescription->fileName():"<<description->fileName()<<"\n";/*ooo added*/
 		ZLStringOption(ZLOption::STATE_CATEGORY, STATE, BOOK, std::string()).setValue(myModel->fileName());
 		Hyphenator::instance().load(description->language());
 		myBookTextView->setModel(&myModel->bookTextModel(), description->fileName());

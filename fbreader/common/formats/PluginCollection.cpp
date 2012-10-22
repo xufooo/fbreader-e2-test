@@ -61,7 +61,8 @@ void PluginCollection::deleteInstance() {
 }
 
 PluginCollection::PluginCollection() :
-  DefaultLanguageOption(ZLOption::CONFIG_CATEGORY, "Format", "DefaultLanguage", EncodingDetector::RUSSIAN) {
+//  DefaultLanguageOption(ZLOption::CONFIG_CATEGORY, "Format", "DefaultLanguage", EncodingDetector::RUSSIAN) { ooo change RUSSIAN to CHINESE
+  DefaultLanguageOption(ZLOption::CONFIG_CATEGORY, "Format", "DefaultLanguage", EncodingDetector::CHINESE) {
 }
 
 PluginCollection::~PluginCollection() {

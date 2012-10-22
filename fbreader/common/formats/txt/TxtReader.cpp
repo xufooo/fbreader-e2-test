@@ -24,6 +24,7 @@
 #include <abstract/ZLInputStream.h>
 
 #include "TxtReader.h"
+#include <iostream>/*ooo added*/
 
 TxtReader::TxtReader(const std::string &encoding) {
   myConverter = ZLEncodingConverter::createConverter(encoding);
@@ -33,6 +34,7 @@ TxtReader::~TxtReader() {
 }
 
 void TxtReader::readDocument(ZLInputStream &stream) {
+	std::cout<<"TxtReader::readDocument\n";
   if (!stream.open()) {
     return;
   }

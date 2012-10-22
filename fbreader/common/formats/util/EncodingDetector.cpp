@@ -24,6 +24,7 @@
 #include <abstract/ZLInputStream.h>
 
 #include "EncodingDetector.h"
+#include <iostream>
 
 static const int BUFSIZE = 65536;
 
@@ -55,6 +56,7 @@ std::string EncodingDetector::detect(ZLInputStream &stream, Language language) {
       if (e != 0) {
         encodingString = e;
       }
+	  std::cout<<"encodingString:"<<encodingString<<"\n";
       if (encodingString == "GB2312") {
         encodingString = "GBK";
       }

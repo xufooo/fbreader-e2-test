@@ -27,6 +27,7 @@
 #include "RtfBookReader.h"
 #include "../../bookmodel/BookModel.h"
 #include "RtfImage.h"
+#include <iostream>/*ooo added*/
 
 RtfBookReader::RtfBookReader(BookModel &model, const std::string &encoding) : RtfReader(encoding), myBookReader(model) {
 }
@@ -140,6 +141,7 @@ bool RtfBookReader::characterDataHandler(std::string &str) {
 }
 
 bool RtfBookReader::readDocument(const std::string &fileName) {
+	std::cout<<"RtfBookReader::readDocument\n";
   myImageIndex = 0;
   myFootnoteIndex = 1;
 

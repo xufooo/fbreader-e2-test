@@ -30,6 +30,7 @@
 #include "../formats/FormatPlugin.h"
 
 #include "../FBOptions.h"
+#include <iostream>/*ooo added*/
 
 const std::string EMPTY = "";
 const std::string UNKNOWN = "unknown";
@@ -65,6 +66,7 @@ bool BookInfo::isFull() const {
 }
 
 BookDescriptionPtr BookDescription::create(const std::string &fileName) {
+	std::cout<<"fileName:"<<fileName<<"\n";
 	int index = fileName.find(':');
 	ZLFile file((index == -1) ? fileName : fileName.substr(0, index));
 	if (!file.exists()) {

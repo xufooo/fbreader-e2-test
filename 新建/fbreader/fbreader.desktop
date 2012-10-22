@@ -1,0 +1,10 @@
+[Desktop Entry]
+BigIcon=fbreader-b.png
+Comment=FBReader is an e-book reader
+Exec=fbreader.sh
+Icon=fbreader-s.png
+Name=FBReader
+Version=0.7.4g
+OsVersion=1.1
+Shared=2
+Type=Application

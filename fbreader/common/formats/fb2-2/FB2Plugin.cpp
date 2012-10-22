@@ -26,6 +26,7 @@
 #include "FB2DescriptionReader.h"
 #include "FB2BookReader.h"
 #include "../../description/BookDescription.h"
+#include <iostream>/*ooo added*/
 
 bool FB2Plugin::acceptsFile(const ZLFile &file) const {
 	return file.extension() == "fb2";
@@ -38,6 +39,7 @@ bool FB2Plugin::readDescription(const std::string &path, BookDescription &descri
 bool FB2Plugin::readModel(const BookDescription &description, BookModel &model) const {
 	// this code fixes incorrect config entry created by fbreader of version <= 0.6.1
 	// makes no sense if old fbreader was not used
+	std::cout<<"FB2Plugin::readModel start!\n";
 	if (description.encoding() != "auto") {
 		BookInfo(description.fileName()).EncodingOption.setValue("auto");
 	}

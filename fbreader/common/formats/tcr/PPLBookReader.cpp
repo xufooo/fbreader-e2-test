@@ -23,6 +23,7 @@
 
 #include "PPLBookReader.h"
 #include <abstract/ZLInputStream.h>
+#include <iostream>/*ooo added*/
 
 static const size_t BUFFER_SIZE = 2048;
 
@@ -87,6 +88,7 @@ void PPLBookReader::addParagraph() {
 }
 
 bool PPLBookReader::readDocument(ZLInputStream &stream) {
+	std::cout<<"PPLBookReader::readDocument\n";
 	if (!stream.open()) {
 		return false;
 	}

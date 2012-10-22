@@ -55,7 +55,8 @@ QAboutDialog::QAboutDialog(const char *caption) : FullScreenDialog(caption) {
 	myHBoxLayout->setMargin( 0 );
 
 	QLabel *myLabel = new QLabel(myWidget);
-	myLabel->setPixmap(QPixmap((std::string(getenv("FBDIR")) + "/pics/FBReader.png").c_str()));
+//	myLabel->setPixmap(QPixmap((std::string(getenv("FBDIR")) + "/pics/FBReader.png").c_str()));ooo fixed
+	myLabel->setPixmap(QPixmap("./pics/FBReader.png"));
 	myLabel->setScaledContents(false);
 	myHBoxLayout->addWidget(myLabel);
 
@@ -71,7 +72,8 @@ QAboutDialog::QAboutDialog(const char *caption) : FullScreenDialog(caption) {
 			"<p>Port to Motorola EZX by Ketut P. Kumajaya<br>"
 			"<tt>&lt;kumajaya@bluebottle.com&gt;</tt></p>"
 			"<p>Port to Motorola Z6 by Alexey Kuznetsov<br>"
-			"<tt>&lt;kuznet@ms2.inr.ac.ru&gt;</tt></p></font></qt>"),
+			"<tt>&lt;kuznet@ms2.inr.ac.ru&gt;</tt></p>"
+			"<p>Port to Motorola E2 by ooo</p></font></qt>"),
 			     myWidget);
 	myVBoxLayout->addWidget(myLabel);
 

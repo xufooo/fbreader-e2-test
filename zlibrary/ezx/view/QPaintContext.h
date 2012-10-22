@@ -26,6 +26,7 @@
 class QPainter;
 class QPixmap;
 class QImage;
+class QFont;/*ooo added*/
 
 class QPaintContext : public ZLPaintContext {
 
@@ -62,6 +63,8 @@ public:
 
 private:
 	QPainter *myPainter;
+	/*ooo added myfont instead of myPainter->font()*/
+	QFont myFont;
 	QPixmap *myPixmap;
 	mutable int mySpaceWidth;
 

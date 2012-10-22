@@ -25,6 +25,7 @@
 
 #include "TextModel.h"
 #include "Paragraph.h"
+#include <iostream>/*ooo added*/
 
 TextModel::TextModel() : myLastEntryStart(0) {
 }
@@ -157,6 +158,7 @@ void PlainTextModel::createParagraphWithReference(long reference) {
 }
 
 void TextModel::addText(const std::string &text) {
+	std::cout<<"TextModel::addText!\n";
 	size_t len = text.length();
 	if ((myLastEntryStart != 0) && (*myLastEntryStart == ParagraphEntry::TEXT_ENTRY)) {
 		size_t oldLen = 0;

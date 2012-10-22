@@ -50,8 +50,10 @@ const std::string &ZLApplicationBase::ApplicationName() {
 
 const std::string ZLApplicationBase::ApplicationDirectory() {
 	return BaseDirectory + PathDelimiter + ourApplicationName;
+	/*ooo here!!!!! to be fixed*/
 }
 
 const std::string ZLApplicationBase::ZLibraryDirectory() {
 	return BaseDirectory + PathDelimiter + "zlibrary";
+	/*ooo here!!!!! to be fixed*/
 }

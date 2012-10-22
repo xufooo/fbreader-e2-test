@@ -26,11 +26,14 @@
 #include "BookReader.h"
 
 #include "../formats/FormatPlugin.h"
+#include <iostream>
 
 BookModel::BookModel(const BookDescriptionPtr description) : myDescription(description) {
+	std::cout<<"i suppose this may one cause\n";
 	ZLFile file(description->fileName());
 	FormatPlugin *plugin = PluginCollection::instance().plugin(file, false);
 	if (plugin != 0) {
+		std::cout<<"plugin:"<<plugin<<"\n";
 		plugin->readModel(*description, *this);
 	}
 }

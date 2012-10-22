@@ -30,6 +30,7 @@
 
 #include "HtmlReader.h"
 #include "HtmlEntityCollection.h"
+#include <iostream>/*ooo added*/
 
 HtmlReader::HtmlReader(const std::string &encoding) {
   myConverter = ZLEncodingConverter::createConverter(encoding);
@@ -100,6 +101,7 @@ static int specialSymbolNumber(SpecialType type, const std::string &txt) {
 }
 
 void HtmlReader::readDocument(ZLInputStream &stream) {
+	std::cout<<"HtmlReader\n";
   if (!stream.open()) {
     return;
   }

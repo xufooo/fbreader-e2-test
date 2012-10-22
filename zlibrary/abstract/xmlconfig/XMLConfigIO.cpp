@@ -28,12 +28,17 @@
 #include "XMLConfigReader.h"
 #include "XMLConfigWriter.h"
 #include "XMLConfigDeltaWriter.h"
+#include <iostream>/*ooo added*/
 
 static const std::string UNKNOWN_CATEGORY = "unknown";
 static const std::string CHANGES_FILE = "config.changes";
 
 void XMLConfig::load() {
-	XMLConfigReader(*this, "").readDocument(ZLApplicationBase::ApplicationDirectory() + ZLApplicationBase::PathDelimiter + "default" + ZLApplicationBase::PathDelimiter + "config.xml");
+	std::cout<<"XMLConfig::load()\n";
+	std::cout<<"." + ZLApplicationBase::PathDelimiter + "default" + ZLApplicationBase::PathDelimiter + "config.xml\n";
+//	XMLConfigReader(*this, "").readDocument(ZLApplicationBase::ApplicationDirectory() + ZLApplicationBase::PathDelimiter + "default" + ZLApplicationBase::PathDelimiter + "config.xml");
+	XMLConfigReader(*this, "").readDocument("." + ZLApplicationBase::PathDelimiter + "default" + ZLApplicationBase::PathDelimiter + "config.xml");
+	std::cout<<"configDir:"<<ZLApplicationBase::HomeDirectory + ZLApplicationBase::PathDelimiter + "." + ZLApplicationBase::ApplicationName()<<"\n";
 	shared_ptr<ZLDir> configDir = ZLFile(ZLApplicationBase::HomeDirectory + ZLApplicationBase::PathDelimiter + "." + ZLApplicationBase::ApplicationName()).directory(false);
 	if (configDir.isNull()) {
 		return;
@@ -55,6 +60,7 @@ void XMLConfig::load() {
 void XMLConfig::saveAll() {
 	saveDelta();
 
+	std::cout<<"XMLConfig::saveAll()::configDir:"<<ZLApplicationBase::HomeDirectory + ZLApplicationBase::PathDelimiter + "." + ZLApplicationBase::ApplicationName()<<"\n";
 	shared_ptr<ZLDir> configDir = ZLFile(ZLApplicationBase::HomeDirectory + ZLApplicationBase::PathDelimiter + "." + ZLApplicationBase::ApplicationName()).directory(true);
 
 	if (!configDir.isNull()) {

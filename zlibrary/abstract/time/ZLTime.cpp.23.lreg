@@ -1,0 +1,51 @@
+
+;; Function ZLTime::ZLTime()
+
+
+
+Pass 0
+
+  Register 52 costs: LO_REGS:42000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:60000 MEM:30000
+  Register 53 costs: LO_REGS:20000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:60000 MEM:30000
+  Register 54 costs: LO_REGS:24000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 55 costs: LO_REGS:40000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 56 costs: LO_REGS:22000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 57 costs: LO_REGS:20000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 58 costs: LO_REGS:22000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 59 costs: LO_REGS:2000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 60 costs: LO_REGS:2000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 61 costs: LO_REGS:20000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+
+  Register 47 pref (null) or none
+  Register 48 pref (null) or none
+  Register 49 pref (null) or none
+  Register 50 pref (null) or none
+  Register 51 pref (null) or none
+  Register 52 pref (null) or none
+  Register 53 pref (null) or none
+  Register 54 pref (null) or none
+  Register 55 pref (null) or none
+  Register 56 pref (null) or none
+  Register 57 pref (null) or none
+  Register 58 pref (null) or none
+  Register 59 pref (null) or none
+  Register 60 pref (null) or none
+  Register 61 pref (null) or none
+
+
+Pass 1
+
+  Register 52 costs: LO_REGS:60000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:60000 MEM:30000
+  Register 53 costs: LO_REGS:60000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:60000 MEM:30000
+  Register 54 costs: LO_REGS:40000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 55 costs: LO_REGS:40000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 56 costs: LO_REGS:40000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 57 costs: LO_REGS:40000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 58 costs: LO_REGS:40000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 59 costs: LO_REGS:40000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 60 costs: LO_REGS:40000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+  Register 61 costs: LO_REGS:40000 BASE_REGS:0 CC_REG:0 GENERAL_REGS:0 call-saved:0 call-used:40000 MEM:20000
+
+62 registers.
+
+Register 52 used 3 times across 15 insns in block 0; set 1 time; crosses 2 calls; 

@@ -26,6 +26,7 @@
 #include <abstract/ZLInputStream.h>
 
 #include "RtfReader.h"
+#include <iostream>/*ooo added*/
 
 std::map<std::string, RtfCommand*> RtfReader::ourKeywordMap;
 
@@ -424,6 +425,7 @@ void RtfReader::interrupt() {
 }
 
 bool RtfReader::readDocument(const std::string &fileName) {
+	std::cout<<"RtfReader::readDocument\n";
   myFileName = fileName;
   myStream = ZLFile(fileName).inputStream();
   if (myStream.isNull() || !myStream->open()) {

@@ -35,7 +35,6 @@
 
 int main(int argc, char **argv) {
 	ZApplication application(argc, argv);
-
 	ZLQtTimeManager::createInstance();
 	ZLUnixFSManager::createInstance();
 	QDialogManager::createInstance();
