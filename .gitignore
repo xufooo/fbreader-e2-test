@@ -1,0 +1,6 @@
+#ignore binary file and library it's too big
+fbreader/FBReader
+zlibrary/libzlibrary.*
+#ignore folders
+新建/
+common-lib/新建/
