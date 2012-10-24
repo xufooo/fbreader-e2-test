@@ -29,14 +29,18 @@
 #include <ZLineEdit.h>
 
 #include "QOpenFileDialog.h"
+#include <iostream>/*ooo added*/
 
 QOpenFileDialogItem::QOpenFileDialogItem(QListView *listView, QListViewItem *previous, const ZLTreeNodePtr node) :
-    QListViewItem(listView, previous, QString::fromLocal8Bit(node->name().c_str())), myNode(node) {
+//    QListViewItem(listView, previous, QString::fromLocal8Bit(node->name().c_str())), myNode(node) {
+    QListViewItem(listView, previous, QString::fromUtf8(node->name().c_str())), myNode(node) {
+	std::cout<<QString::fromUtf8(node->name().c_str())+"\n";/*ooo added*/
 }
 
 QOpenFileDialog::QOpenFileDialog(const char *caption, const ZLTreeHandler &handler) :
     FullScreenDialog(caption),
     ZLOpenFileDialog(handler) {
+		std::cout<<"QOpenFileDialog start!\n";
 	myMainBox = new QVBox(this);
 	setContentWidget(myMainBox);
 

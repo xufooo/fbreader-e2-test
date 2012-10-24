@@ -32,7 +32,6 @@
 
 #include "QPaintContext.h"
 #include "../../qt/image/QImageManager.h"
-#include <iostream>/*ooo added*/
 
 QPaintContext::QPaintContext() {
 	myPainter = new QPainter();
@@ -50,7 +49,6 @@ QPaintContext::~QPaintContext() {
 }
 
 void QPaintContext::setSize(int w, int h) {
-	std::cout<<"QPaintContext::setSize\n";
 	if (myPixmap != NULL) {
 		if ((myPixmap->width() != w) || (myPixmap->height() != h)) {
 			myPainter->end();
@@ -64,7 +62,6 @@ void QPaintContext::setSize(int w, int h) {
 		if (myFontIsStored) {
 			myFontIsStored = false;
 			setFont(myStoredFamily, myStoredSize, myStoredBold, myStoredItalic);
-			std::cout<<"setSize--setFont\n";
 			myPainter->setFont(myFont);/*ooo added*/
 		}
 	}
@@ -183,7 +180,6 @@ void QPaintContext::drawString(int x, int y, const char *str, int len) {
 		qStr[i] == QChar(0x13,0x20))
 		qStr[i] = QChar('-', 0);
 	}
-	std::cout<<"qStr:"<<qStr<<";x+leftMargin:"<<x + leftMargin()<<";y+topMargin:"<<y + topMargin()<<";stringWidth(str,len):"<<stringWidth(str,len)<<";stringHeight():"<<stringHeight()<<"\n";
 //	myPainter->drawText(x + leftMargin(), y + topMargin(),0,-1,-1, qStr);
 	myPainter->drawText(x + leftMargin(), y + topMargin(),stringWidth(str,len),stringHeight()+3,0, qStr);
 //	myPainter->drawText(x + leftMargin(), y + topMargin(), qStr);

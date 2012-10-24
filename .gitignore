@@ -1,6 +1,8 @@
-#ignore binary file and library it's too big
+#ignore binary file and *.o files and library it's too big
 fbreader/FBReader
 zlibrary/libzlibrary.*
+*.[oa(so)]
+*~
 #ignore folders
 新建/
 common-lib/新建/

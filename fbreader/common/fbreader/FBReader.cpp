@@ -307,14 +307,12 @@ void FBReader::openBook(BookDescriptionPtr description) {
 
 void FBReader::openBookInternal(BookDescriptionPtr description) {
 	if (!description.isNull()) {
-		std::cout<<"!description.isNULL()\n";/*ooo added*/
 		myBookTextView->saveState();
 		myContentsView->saveState();
 		if (myModel != 0) {
 			delete myModel;
 		}
 		myModel = new BookModel(description);
-		std::cout<<"description->title():"<<description->title()<<"\ndescription->fileName():"<<description->fileName()<<"\n";/*ooo added*/
 		ZLStringOption(ZLOption::STATE_CATEGORY, STATE, BOOK, std::string()).setValue(myModel->fileName());
 		Hyphenator::instance().load(description->language());
 		myBookTextView->setModel(&myModel->bookTextModel(), description->fileName());
@@ -359,6 +357,7 @@ void FBReader::optionsSlot() {
 }
 
 void FBReader::addBookSlot() {
+	std::cout<<"FBReader::addBookSlot()\n";
 	FBFileHandler handler;
 	ZLDialogManager::instance().openFileDialog("FBReader - Add File To Library", handler);
 	BookDescriptionPtr description = handler.description();

@@ -28,7 +28,6 @@
 #include "ZLXMLReader.h"
 
 #include "expat/ZLXMLReaderInternal.h"
-#include <iostream>/*ooo added*/
 
 void ZLXMLReader::startElementHandler(const char*, const char**) {
 }
@@ -50,12 +49,10 @@ ZLXMLReader::~ZLXMLReader() {
 }
 
 bool ZLXMLReader::readDocument(const std::string &fileName) {
-	std::cout<<"ZLXMLReader::readDocument\n";
 	return readDocument(ZLFile(fileName).inputStream());
 }
 
 bool ZLXMLReader::readDocument(shared_ptr<ZLInputStream> stream) {
-	std::cout<<"start ZLXMLReader::readDocument\n";
 	if (stream.isNull() || !stream->open()) {
 		return false;
 	}
@@ -68,7 +65,6 @@ bool ZLXMLReader::readDocument(shared_ptr<ZLInputStream> stream) {
 	do {
 		length = stream->read(myParserBuffer, bufferSize());
 		if (!myInternalReader->parseBuffer(myParserBuffer, length)) {
-			std::cout<<"break!!!!\n";
 			break;
     }
   } while ((length == bufferSize()) && !myInterrupted);
