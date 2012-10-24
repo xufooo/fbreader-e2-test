@@ -1315,12 +1315,10 @@ const QPixmap * QListViewItem::pixmap( int column ) const
 void QListViewItem::paintCell( QPainter * p, const QColorGroup & cg,
 			       int column, int width, int align )
 {
-	std::cout<<"QListViewItem::paintCell\n";
     // Change width() if you change this.
 
     if ( !p )
 	return;
-	std::cout<<"QListViewItem::paintCell not return(!p)\n";
 
     QListView *lv = listView();
 
@@ -1465,7 +1463,6 @@ void QListViewItem::paintFocus( QPainter *p, const QColorGroup &cg,
 void QListViewItem::paintBranches( QPainter * p, const QColorGroup & cg,
 				   int w, int y, int h, GUIStyle s )
 {
-	std::cout<<"QListViewItem::paintBranches\n";
     listView()->paintEmptyArea( p, QRect( 0, 0, w, h ) );
     QListViewItem * child = firstChild();
     int linetop = 0, linebot = 0;
@@ -1973,7 +1970,6 @@ QListView::~QListView()
 void QListView::drawContentsOffset( QPainter * p, int ox, int oy,
 				    int cx, int cy, int cw, int ch )
 {
-	std::cout<<"QListView::drawContentsOffset\n";
     if ( !d->drawables ||
 	 d->drawables->isEmpty() ||
 	 d->topPixel > cy ||
