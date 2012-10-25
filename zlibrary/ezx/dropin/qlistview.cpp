@@ -517,6 +517,7 @@ void QListViewItem::sort()
 
 void QListViewItem::init()
 {
+	std::cout<<"void QListViewItem::init()\n";
     ownHeight = 0;
     maybeTotalHeight = -1;
     open = FALSE;
@@ -941,6 +942,7 @@ void QListViewItem::setOpen( bool o )
 
 void QListViewItem::setup()
 {
+	std::cout<<"void QListViewItem::setup()\n";
     widthChanged();
     QListView * v = listView();
     int ph = 0;
@@ -1315,6 +1317,8 @@ const QPixmap * QListViewItem::pixmap( int column ) const
 void QListViewItem::paintCell( QPainter * p, const QColorGroup & cg,
 			       int column, int width, int align )
 {
+	std::cout<<"QListViewItem::paintCell\n";
+	std::cout<<"column:"<<column<<";width:"<<width<<"\n";
     // Change width() if you change this.
 
     if ( !p )
@@ -1324,6 +1328,7 @@ void QListViewItem::paintCell( QPainter * p, const QColorGroup & cg,
 
     // had, but we _need_ the column info for the ellipsis thingy!!!
     if ( !columns ) {
+		std::cout<<"!columns\n";
 	for ( uint i = 0; i < lv->d->column.size(); ++i ) {
 	    setText( i, text( i ) );
 	}
@@ -1442,6 +1447,7 @@ int QListViewItem::width( const QFontMetrics& fm,
 void QListViewItem::paintFocus( QPainter *p, const QColorGroup &cg,
 				const QRect & r )
 {
+	std::cout<<"QListViewItem::paintFocus\n";
     listView()->style().drawFocusRect( p, r, cg, isSelected()? & cg.highlight() : & cg.base(), isSelected() );
 }
 
@@ -1463,6 +1469,7 @@ void QListViewItem::paintFocus( QPainter *p, const QColorGroup &cg,
 void QListViewItem::paintBranches( QPainter * p, const QColorGroup & cg,
 				   int w, int y, int h, GUIStyle s )
 {
+	std::cout<<"QListViewItem::paintBranches\n";
     listView()->paintEmptyArea( p, QRect( 0, 0, w, h ) );
     QListViewItem * child = firstChild();
     int linetop = 0, linebot = 0;
@@ -1826,6 +1833,7 @@ QListView::QListView( QWidget * parent, const char *name )
 
 void QListView::init()
 {
+	std::cout<<"QListView::init()\n";
     d = new QListViewPrivate;
     d->vci = 0;
     d->timer = new QTimer( this );
@@ -1970,6 +1978,31 @@ QListView::~QListView()
 void QListView::drawContentsOffset( QPainter * p, int ox, int oy,
 				    int cx, int cy, int cw, int ch )
 {
+	std::cout<<"QListView::drawContentsOffset\n";
+	std::cout<<"ox:"<<ox<<";oy:"<<oy<<";cx:"<<cx<<";cy:"<<cy<<";cw:"<<cw<<";ch:"<<ch<<"\n";
+	/*ooo added*/
+	switch(p->device()->devType()){
+		case QInternal::Widget:
+			std::cout<<"p->device()->devType():QInternal::Widget\n";
+			break;
+		case QInternal::Pixmap:
+			std::cout<<"p->device()->devType():QInternal::Pixmap\n";
+			break;
+		case QInternal::Printer:
+			std::cout<<"p->device()->devType():QInternal::Printer\n";
+			break;
+		case QInternal::Picture:
+			std::cout<<"p->device()->devType():QInternal::Picture\n";
+			break;
+		default:
+			std::cout<<"p->device()->devType():QInternal::Undefined\n";
+	}
+	/*
+	p->begin(this);
+	p->drawText(50,50,"oooooo");
+	p->end();
+	*/
+	/*ooo added end*/
     if ( !d->drawables ||
 	 d->drawables->isEmpty() ||
 	 d->topPixel > cy ||
@@ -2068,6 +2101,7 @@ void QListView::drawContentsOffset( QPainter * p, int ox, int oy,
 		    dp.end();
 		    p->drawPixmap( QPoint( 0, 0 ), *pm, QRect( 0, 0, ps.width(), ps.height() ) );
 		} else {
+			std::cout<<"!!!!!!!d->useDoubleBuffer\n";//ooo
 		    current->i->paintCell( p, colorGroup(), ac, r.width(),
 					   columnAlignment( ac ) );
 		}
@@ -2171,6 +2205,7 @@ void QListView::drawContentsOffset( QPainter * p, int ox, int oy,
 
 void QListView::paintEmptyArea( QPainter * p, const QRect & rect )
 {
+	std::cout<<"QListView::paintEmptyArea\n";
 #ifdef QT_KEYPAD_MODE
     if ( !isModalEditing() && !qpe_singleFocusWidget(this) )
 	p->fillRect( rect, colorGroup().brush( QColorGroup::Background ) );
@@ -2186,6 +2221,7 @@ void QListView::paintEmptyArea( QPainter * p, const QRect & rect )
 
 void QListView::buildDrawableList() const
 {
+	std::cout<<"QListView::buildDrawableList()\n";
     d->r->enforceSortOrder();
 
     QStack<QListViewPrivate::Pending> stack;
@@ -2632,6 +2668,7 @@ int QListView::columnAlignment( int column ) const
  */
 void QListView::show()
 {
+	std::cout<<"QListView::show()\n";
     // Reimplemented to setx the correct background mode and viewed
     // area size.
     if ( !isVisible() ) {
@@ -2648,6 +2685,7 @@ void QListView::show()
 
 void QListView::updateContents()
 {
+	std::cout<<"QListView::updateContents()\n";
     if ( !isVisible() ) {
 	// Not in response to a setText/setPixmap any more.
 	d->useDoubleBuffer = FALSE;
@@ -2668,6 +2706,7 @@ void QListView::updateContents()
 
 void QListView::updateGeometries()
 {
+	std::cout<<"QListView::updateGeometries()\n";
     int th = d->r->totalHeight();
     int tw = d->h->cellPos( d->h->count()-1 ) +
 	    d->h->cellSize( d->h->count()-1 );
@@ -2749,6 +2788,7 @@ void QListView::updateDirtyItems()
 
 void QListView::makeVisible()
 {
+	std::cout<<"QListView::makeVisible()\n";
     if ( d->focusItem )
 	ensureItemVisible( d->focusItem );
 }
@@ -3613,6 +3653,7 @@ void QListView::doAutoScroll()
 
 void QListView::focusInEvent( QFocusEvent *e )
 {
+	std::cout<<"QListView::focusInEvent\n";
     if ( d->focusItem )
 	repaintItem( d->focusItem );
     else if ( firstChild() && e->reason() != QFocusEvent::Mouse ) {
@@ -4538,6 +4579,7 @@ QListViewItem * QListView::firstChild() const
 
 void QListViewItem::repaint() const
 {
+	std::cout<<"QListViewItem::repaint()\n";
     listView()->repaintItem( this );
 }
 
@@ -5286,6 +5328,7 @@ void QListViewItem::moveItem( QListViewItem *after )
 
 void QListView::showEvent( QShowEvent * )
 {
+	std::cout<<"QListView::showEvent\n";
     if ( d->drawables )
 	d->drawables->clear();
     delete d->dirtyItems;
