@@ -57,7 +57,7 @@ public:
 #if 1
 	virtual QSize sizeHint() const
 	{
-	    QSize s = myLayout->sizeHint();
+	    QSize s;// = myLayout->sizeHint();temporarily fix the seg fault
 printf("sizeHint: %d %d\n", s.width(), s.height()); fflush(stdout);
             if (s.width() > 240)
 		s.setWidth(240);

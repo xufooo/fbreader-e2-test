@@ -46,6 +46,7 @@
 #include <ZScrollView.h>
 #include <ZScrollPanel.h>
 #include <ZLabel.h>
+#include <iostream>/*ooo added*/
 
 class MyTabBar : public QTabBar
 {
