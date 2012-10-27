@@ -1399,7 +1399,6 @@ void QListViewItem::paintCell( QPainter * p, const QColorGroup & cg,
     }
 
 	std::clog<<t;/*ooo add this to fix !t.isEmpty()=false*/
-//    if ( !t.isEmpty() ) {
     if ( !t.isEmpty() ) {
 	if ( ! (align & AlignTop | align & AlignBottom) )
             align |= AlignVCenter;
@@ -1990,12 +1989,6 @@ void QListView::drawContentsOffset( QPainter * p, int ox, int oy,
 		default:
 			std::cout<<"p->device()->devType():QInternal::Undefined\n";
 	}
-	/*
-	p->begin(this);
-	p->drawText(50,50,"oooooo");
-	p->end();
-	*/
-	/*ooo added end*/
     if ( !d->drawables ||
 	 d->drawables->isEmpty() ||
 	 d->topPixel > cy ||
@@ -2086,9 +2079,11 @@ void QListView::drawContentsOffset( QPainter * p, int ox, int oy,
 		    dp.translate( -r.left(), -r.top() );
 		    paintEmptyArea( &dp, r );
 		    dp.translate( r.left(), r.top() );
-		    dp.setFont( p->font() );
+			std::cout<<"below may cause error\n";
+//		    dp.setFont( p->font() );//ooo comment this to avoid sf tempo..
 		    dp.setPen( p->pen() );
 		    dp.setBrush( p->brush() );
+			std::cout<<"above may cause error\n";
 		    current->i->paintCell( &dp, colorGroup(), ac, r.width(),
 					   columnAlignment( ac ) );
 		    dp.end();
