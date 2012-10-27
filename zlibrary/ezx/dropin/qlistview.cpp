@@ -1971,7 +1971,6 @@ QListView::~QListView()
 void QListView::drawContentsOffset( QPainter * p, int ox, int oy,
 				    int cx, int cy, int cw, int ch )
 {
-	std::cout<<"QListView::drawContentsOffset\n";
 	/*ooo added*/
 	switch(p->device()->devType()){
 		case QInternal::Widget:
@@ -2079,11 +2078,9 @@ void QListView::drawContentsOffset( QPainter * p, int ox, int oy,
 		    dp.translate( -r.left(), -r.top() );
 		    paintEmptyArea( &dp, r );
 		    dp.translate( r.left(), r.top() );
-			std::cout<<"below may cause error\n";
 //		    dp.setFont( p->font() );//ooo comment this to avoid sf tempo..
 		    dp.setPen( p->pen() );
 		    dp.setBrush( p->brush() );
-			std::cout<<"above may cause error\n";
 		    current->i->paintCell( &dp, colorGroup(), ac, r.width(),
 					   columnAlignment( ac ) );
 		    dp.end();

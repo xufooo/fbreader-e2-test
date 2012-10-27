@@ -39,7 +39,14 @@ void FormatPlugin::detectEncodingAndLanguage(BookDescription &description, ZLInp
     if ((encoding == "US-ASCII") ||
         (encoding == "ISO-8859-1")) {
       WritableBookDescription(description).language() = "en";
-    } else if ((description.encoding() == "KOI8-R") ||
+    } 	 
+	/*ooo added chinese support*/
+	  else if ((description.encoding() == "BIG5") ||
+        (encoding == "GBK")) {
+      WritableBookDescription(description).language() = "chinese";
+    }
+	/*ooo added chinese support end*/
+	  else if ((description.encoding() == "KOI8-R") ||
         (encoding == "windows-1251") ||
         (encoding == "ISO-8859-5") ||
         (encoding == "IBM866")) {

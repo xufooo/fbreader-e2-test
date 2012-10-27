@@ -65,7 +65,7 @@ private:
 };
 
 const std::string TeXHyphenator::PatternZip() {
-	std::cout<<"maybe here is the key point!\n";
+	std::cout<<"TeXHyphenator::PatternZip(): a set path func\n";
 //	return ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter + "hyphenationPatterns.zip";
 	return "." + ZLApplication::PathDelimiter + "hyphenationPatterns.zip";
 }
