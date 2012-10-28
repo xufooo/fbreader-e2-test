@@ -87,6 +87,5 @@ std::string ZLKeyUtil::keyName(int unicode, int key, int modifiersMask) {
 			name = it->second + "+" + name;
 		}
 	}
-
 	return name;
 }

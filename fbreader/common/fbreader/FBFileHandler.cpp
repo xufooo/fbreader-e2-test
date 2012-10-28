@@ -29,10 +29,8 @@
 #include "FBFileHandler.h"
 #include "../Files.h"
 #include "../formats/FormatPlugin.h"
-#include <iostream>/*ooo added*/
 
 const std::string &FBFileHandler::pixmapName(const ZLDir &dir, const std::string &name, bool isFile) const {
-	std::cout<<"FBFileHandler::pixmapName\n";
 	static const std::string FOLDER_ICON = ImageDirectory + ZLApplication::PathDelimiter + "folder";
 	static const std::string ZIPFOLDER_ICON = ImageDirectory + ZLApplication::PathDelimiter + "zipfolder";
 	static const std::string NO_ICON = "";
@@ -43,15 +41,12 @@ const std::string &FBFileHandler::pixmapName(const ZLDir &dir, const std::string
 	if (!isFile) {
 		return FOLDER_ICON;
 	}
-	std::cout<<"dir.itemName(name)):"<<dir.itemName(name)<<"\n";
 	ZLFile file(dir.itemName(name));
 	FormatPlugin *plugin = PluginCollection::instance().plugin(file, false);
 	if (plugin != 0) {
-		std::cout<<"plugin != 0\n";
 		std::map<FormatPlugin*,std::string>::const_iterator i = pluginIcons.find(plugin);
 		if (i == pluginIcons.end()) {
 			pluginIcons[plugin] = ImageDirectory + ZLApplication::PathDelimiter + plugin->iconName();
-			std::cout<<"pluginIcons[plugin] = "<<pluginIcons[plugin]<<"\n";
 		}
 		return pluginIcons[plugin];
 	}

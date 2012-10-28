@@ -72,8 +72,8 @@ QPixmap &QOpenFileDialog::getPixmap(const ZLTreeNodePtr node) {
 	const std::string &pixmapName = node->pixmapName();
 	std::map<std::string,QPixmap*>::const_iterator it = myPixmaps.find(pixmapName);
 	if (it == myPixmaps.end()) {
-//		QPixmap *pixmap = new QPixmap(QString((std::string(getenv("FBDIR")) + "/pics/" + pixmapName + ".png").c_str()));
-		QPixmap *pixmap = new QPixmap(QString((std::string(".") + "/pics/" + pixmapName + ".png").c_str()));//ooo fixed
+		QPixmap *pixmap = new QPixmap(QString((std::string(getenv("FBDIR")) + "/pics/" + pixmapName + ".png").c_str()));
+//		QPixmap *pixmap = new QPixmap(QString((std::string(".") + "/pics/" + pixmapName + ".png").c_str()));//ooo fixed
 		myPixmaps[pixmapName] = pixmap;
 		return *pixmap;
 	} else {
