@@ -7,7 +7,7 @@ include $(ROOTDIR)/makefiles/arch/$(TARGET_ARCH).mk
 CFLAGS += -DLIBICONV_PLUG
 
 ifeq "$(TARGET_STATUS)" "release"
-	CFLAGS += -O3
+	CFLAGS += -O1
 #	LDFLAGS += -s
 endif
 ifeq "$(TARGET_STATUS)" "debug"

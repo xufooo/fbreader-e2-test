@@ -16,7 +16,7 @@ CXX	= $(TOOLSDIR)/bin/arm-linux-g++
 # You need Motorola's proprietary header called qwallpaper.h
 # You can find it somewhere on the net because I can't ditributed it, copy to zlibrary/ezx/dropin
 CFLAGS = -pipe -DQWS -fno-exceptions -fno-rtti -Wall -W -mcpu=iwmmxt -mtune=iwmmxt -DEZX -DQT_NO_DEBUG -DQT_NO_DRAGANDDROP -DQT_NO_PROPERTIES -DQT_NO_TOOLBUTTON# -Wno-ctor-dtor-privacy -fexpensive-optimizations -fomit-frame-pointer -DINSTALLDIR=\"$(INSTALLDIR)\" -v -Q 
-LDFLAGS = -Wl,-rpath-link,$(QTDIR)/lib:$(EZXDIR)/lib,-rpath,./
+LDFLAGS = -Wl,-rpath-link,$(QTDIR)/lib:$(EZXDIR)/lib,-rpath,./:./lib/:../lib/
 #DEPGEN = $(CC) -MM
 
 EXPATLIBS = -L /home/ooo/Work/Compile/fbreader-0.7.4g/common-lib/lib -lexpat
