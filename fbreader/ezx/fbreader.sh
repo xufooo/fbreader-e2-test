@@ -1,7 +1,7 @@
 #!/bin/sh
 
 MYFILE=`basename $0`
-MYPATH=`echo $0 | sed -e 's/'$MYFILE'//g'`
+MYPATH=`pwd`
 cd $MYPATH
 
 export FBDIR=$MYPATH

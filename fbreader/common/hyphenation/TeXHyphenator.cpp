@@ -65,9 +65,9 @@ private:
 };
 
 const std::string TeXHyphenator::PatternZip() {
-	std::cout<<"TeXHyphenator::PatternZip(): a set path func\n";
-//	return ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter + "hyphenationPatterns.zip";
-	return "." + ZLApplication::PathDelimiter + "hyphenationPatterns.zip";
+	std::cout<<"TeXHyphenator::PatternZip():"<<ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter + "hyphenationPatterns.zip"<<"\n";
+	return ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter + "hyphenationPatterns.zip";
+//	return "." + ZLApplication::PathDelimiter + "hyphenationPatterns.zip";
 }
 
 void TeXHyphenator::collectLanguages() {

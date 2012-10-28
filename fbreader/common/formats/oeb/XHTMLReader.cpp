@@ -360,8 +360,8 @@ const std::vector<std::string> &XHTMLReader::externalDTDs() const {
 	  std::cout<<"XHTMLReader::externalDTDs()\n";
 	  std::cout<<"directoryName:"<<ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter +"formats" + ZLApplication::PathDelimiter + "xhtml"+"\n";
     std::string directoryName =
-//	ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter +"formats" + ZLApplication::PathDelimiter + "xhtml";
-	"./formats" + ZLApplication::PathDelimiter + "xhtml";
+	ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter +"formats" + ZLApplication::PathDelimiter + "xhtml";
+//	"./formats" + ZLApplication::PathDelimiter + "xhtml";ooo
     shared_ptr<ZLDir> dtdPath = ZLFile(directoryName).directory();
     if (!dtdPath.isNull()) {
       std::vector<std::string> files;

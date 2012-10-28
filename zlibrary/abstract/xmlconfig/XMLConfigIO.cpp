@@ -35,9 +35,9 @@ static const std::string CHANGES_FILE = "config.changes";
 
 void XMLConfig::load() {
 	std::cout<<"XMLConfig::load()\n";
-	std::cout<<"." + ZLApplicationBase::PathDelimiter + "default" + ZLApplicationBase::PathDelimiter + "config.xml\n";
-//	XMLConfigReader(*this, "").readDocument(ZLApplicationBase::ApplicationDirectory() + ZLApplicationBase::PathDelimiter + "default" + ZLApplicationBase::PathDelimiter + "config.xml");
-	XMLConfigReader(*this, "").readDocument("." + ZLApplicationBase::PathDelimiter + "default" + ZLApplicationBase::PathDelimiter + "config.xml");
+	std::cout<<ZLApplicationBase::ApplicationDirectory() + ZLApplicationBase::PathDelimiter + "default" + ZLApplicationBase::PathDelimiter + "config.xml"+"\n";
+	XMLConfigReader(*this, "").readDocument(ZLApplicationBase::ApplicationDirectory() + ZLApplicationBase::PathDelimiter + "default" + ZLApplicationBase::PathDelimiter + "config.xml");
+//	XMLConfigReader(*this, "").readDocument("." + ZLApplicationBase::PathDelimiter + "default" + ZLApplicationBase::PathDelimiter + "config.xml");
 	std::cout<<"configDir:"<<ZLApplicationBase::HomeDirectory + ZLApplicationBase::PathDelimiter + "." + ZLApplicationBase::ApplicationName()<<"\n";
 	shared_ptr<ZLDir> configDir = ZLFile(ZLApplicationBase::HomeDirectory + ZLApplicationBase::PathDelimiter + "." + ZLApplicationBase::ApplicationName()).directory(false);
 	if (configDir.isNull()) {

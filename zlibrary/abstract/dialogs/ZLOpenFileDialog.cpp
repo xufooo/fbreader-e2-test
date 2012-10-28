@@ -27,8 +27,8 @@
 #include "../util/ZLStringUtil.h"
 #include <iostream>/*ooo added*/
 
-//static const std::string DefaultDirectory = "~";ooo fixed
-static const std::string DefaultDirectory = "/mmc/mmca6";/*this doesnt work!!why?*/
+static const std::string DefaultDirectory = "~";
+//static const std::string DefaultDirectory = "/mmc/mmca6";/*this doesnt work!!why?*/
 
 ZLOpenFileDialog::ZLOpenFileDialog(const ZLTreeHandler &handler) :
   DirectoryOption(ZLOption::LOOK_AND_FEEL_CATEGORY, "OpenFileDialog", "Directory", DefaultDirectory) {

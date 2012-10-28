@@ -27,9 +27,9 @@
 #include <iostream>/*ooo added*/
 
 std::string ZLEncodingConverter::encodingDescriptionPath() {
-//	return ZLApplication::ZLibraryDirectory() + ZLApplication::PathDelimiter + "encodings";
 	std::cout<<"encodingDescriptionPath():"<<ZLApplication::ZLibraryDirectory() + ZLApplication::PathDelimiter + "encodings\n";
-	return "." + ZLApplication::PathDelimiter + "encodings";
+	return ZLApplication::ZLibraryDirectory() + ZLApplication::PathDelimiter + "encodings";
+//	return "." + ZLApplication::PathDelimiter + "encodings";
 }
 
 shared_ptr<ZLEncodingConverter> ZLEncodingConverter::createConverter(const std::string &encoding) {

@@ -44,8 +44,8 @@ int HtmlEntityCollection::symbolNumber(const std::string &name) {
 	std::cout<<ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter + "formats" + ZLApplication::PathDelimiter + "html" + ZLApplication::PathDelimiter + "html.ent"+"\n";
 	if (ourCollection.empty()) {
 		CollectionReader(ourCollection).readDocument(
-//			ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter + "formats" + ZLApplication::PathDelimiter + "html" + ZLApplication::PathDelimiter + "html.ent"
-			"./formats" + ZLApplication::PathDelimiter + "html" + ZLApplication::PathDelimiter + "html.ent"
+			ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter + "formats" + ZLApplication::PathDelimiter + "html" + ZLApplication::PathDelimiter + "html.ent"
+//			"./formats" + ZLApplication::PathDelimiter + "html" + ZLApplication::PathDelimiter + "html.ent"ooo
 		);
 	}
 	std::map<std::string,int>::const_iterator it = ourCollection.find(name);
