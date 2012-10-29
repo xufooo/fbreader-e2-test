@@ -55,8 +55,8 @@ QAboutDialog::QAboutDialog(const char *caption) : FullScreenDialog(caption) {
 	myHBoxLayout->setMargin( 0 );
 
 	QLabel *myLabel = new QLabel(myWidget);
-//	myLabel->setPixmap(QPixmap((std::string(getenv("FBDIR")) + "/pics/FBReader.png").c_str()));ooo fixed
-	myLabel->setPixmap(QPixmap("./pics/FBReader.png"));
+	myLabel->setPixmap(QPixmap((std::string(getenv("FBDIR")) + "/pics/FBReader.png").c_str()));
+//	myLabel->setPixmap(QPixmap("./pics/FBReader.png"));ooo
 	myLabel->setScaledContents(false);
 	myHBoxLayout->addWidget(myLabel);
 

@@ -18,6 +18,7 @@ clean: .cleandir
 
 .builddir: .cleandir
 	@mkdir -p $(BASEDIR)/bin
+	@mkdir -p $(BASEDIR)/lib
 	@mkdir -p $(BASEDIR)/share/zlibrary
 	@cp ../../zlibrary/data/keynames.ezx.xml $(BASEDIR)/share/zlibrary/keynames.xml
 	@cp -r ../../zlibrary/data/encodings $(BASEDIR)/share/zlibrary
@@ -38,6 +39,8 @@ clean: .cleandir
 	@cp ../data/default/config.ezx.xml $(BASEDIR)/share/FBReader/default/config.xml
 	@cp ../data/default/keymap.ezx.xml $(BASEDIR)/share/FBReader/default/keymap.xml
 	@cp ../data/default/styles.ezx.xml $(BASEDIR)/share/FBReader/default/styles.xml
+	@cp ../../common-lib/lib/libenca.so.0.5.1 $(BASEDIR)/lib/libenca.so.0
+	@cp ../../common-lib/lib/libexpat.so.1.5.2 $(BASEDIR)/lib/libexpat.so.1
 
 .buildpackage:
 	@tar czf $(package) -C mpkg fbreader

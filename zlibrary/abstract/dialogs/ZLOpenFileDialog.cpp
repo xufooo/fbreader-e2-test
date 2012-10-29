@@ -25,16 +25,12 @@
 #include "../filesystem/ZLFile.h"
 #include "../filesystem/ZLDir.h"
 #include "../util/ZLStringUtil.h"
-#include <iostream>/*ooo added*/
 
-//static const std::string DefaultDirectory = "~";ooo fixed
-static const std::string DefaultDirectory = "/mmc/mmca6";/*this doesnt work!!why?*/
+static const std::string DefaultDirectory = "~";
 
 ZLOpenFileDialog::ZLOpenFileDialog(const ZLTreeHandler &handler) :
   DirectoryOption(ZLOption::LOOK_AND_FEEL_CATEGORY, "OpenFileDialog", "Directory", DefaultDirectory) {
-	std::cout<<"ZLOpenFileDialog::DirectoryOption.value():"<<DirectoryOption.value()<<"\n";
   shared_ptr<ZLDir> dir = ZLFile(DirectoryOption.value()).directory();
-	std::cout<<"dir:"<<dir->name()<<"\n";
   if (dir.isNull()) {
     dir = ZLFile(DefaultDirectory).directory();
   }
@@ -103,7 +99,6 @@ const std::string ZLDirTreeState::shortName() const {
 
 void ZLDirTreeState::addSubnode(const std::string &name, bool isFile) const {
   const std::string &pixmapName = handler().pixmapName(*myDir, name, isFile);
-  std::cout<<"pixmapName:"<<pixmapName<<"\n";
   if (!pixmapName.empty()) {
     mySubnodes.push_back(new ZLTreeNode(name, isFile, pixmapName));
   }
@@ -111,13 +106,11 @@ void ZLDirTreeState::addSubnode(const std::string &name, bool isFile) const {
 
 const std::vector<ZLTreeNodePtr> &ZLDirTreeState::subnodes() const {
   if (!myIsUpToDate) {
-	  std::cout<<"this func list subnodes!\n";
     if (myDir->name() != "/") {
-		std::cout<<"myDir->name() != /\n";
       addSubnode("..", false);
     }
     std::vector<std::string> names;
-    myDir->collectSubDirs(names, true);/*this func do nothing??*/
+    myDir->collectSubDirs(names, true);
     std::sort(names.begin(), names.end());
     for (std::vector<std::string>::const_iterator it = names.begin(); it != names.end(); ++it) {
       addSubnode(*it, false);

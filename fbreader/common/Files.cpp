@@ -23,6 +23,6 @@
 #include "Files.h"
 
 const std::string Files::DefaultFilesPathPrefix() {
-//	return ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter + "default" + ZLApplication::PathDelimiter;ooo fixed path
-	return "." + ZLApplication::PathDelimiter + "default" + ZLApplication::PathDelimiter;
+	return ZLApplication::ApplicationDirectory() + ZLApplication::PathDelimiter + "default" + ZLApplication::PathDelimiter;
+//	return "." + ZLApplication::PathDelimiter + "default" + ZLApplication::PathDelimiter;//ooo
 }

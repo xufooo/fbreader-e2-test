@@ -27,13 +27,14 @@
 #include "../common/fbreader/CollectionView.h"
 #include "../common/fbreader/FBFileHandler.h"
 
-//const std::string ZLApplicationBase::BaseDirectory = std::string(getenv("FBDIR")) + "/share";
-const std::string ZLApplicationBase::BaseDirectory = std::string(".");
+const std::string ZLApplicationBase::BaseDirectory = std::string(getenv("FBDIR")) + "/share";//ooo fixed 
+//const std::string ZLApplicationBase::BaseDirectory = std::string(".");
 const std::string ZLApplicationBase::PathDelimiter = "/";
 //const std::string ZLApplicationBase::HomeDirectory = "~";
 const std::string ZLApplicationBase::HomeDirectory = ".";
 
-const std::string FBFileHandler::ImageDirectory = "./pics";
+//const std::string FBFileHandler::ImageDirectory = "./pics";
+const std::string FBFileHandler::ImageDirectory = "";
 
-//const std::string CollectionView::DeleteBookImageFile = std::string(getenv("FBDIR")) + "/pics/removebook.png";
-const std::string CollectionView::DeleteBookImageFile = std::string("/mmc/mmca6/fbreader/pics/removebook.png");
+const std::string CollectionView::DeleteBookImageFile = std::string(getenv("FBDIR")) + "/pics/removebook.png";//ooo fixed
+//const std::string CollectionView::DeleteBookImageFile = std::string("/mmc/mmca6/fbreader/pics/removebook.png");

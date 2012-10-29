@@ -55,9 +55,9 @@ void KeyNamesReader::startElementHandler(const char *tag, const char **attribute
 
 std::string ZLKeyUtil::keyName(int unicode, int key, int modifiersMask) {
 	if (!ourInitialized) {
-//		KeyNamesReader().readDocument(ZLApplication::ZLibraryDirectory() + ZLApplication::PathDelimiter + "keynames.xml");
+		KeyNamesReader().readDocument(ZLApplication::ZLibraryDirectory() + ZLApplication::PathDelimiter + "keynames.xml");
 		std::cout<<"keyName:"<<ZLApplication::ZLibraryDirectory() + ZLApplication::PathDelimiter + "keynames.xml\n";
-		KeyNamesReader().readDocument("." + ZLApplication::PathDelimiter + "keynames.xml");
+	//	KeyNamesReader().readDocument("." + ZLApplication::PathDelimiter + "keynames.xml");
 		ourInitialized = true;
 	}
 
@@ -87,6 +87,5 @@ std::string ZLKeyUtil::keyName(int unicode, int key, int modifiersMask) {
 			name = it->second + "+" + name;
 		}
 	}
-
 	return name;
 }
