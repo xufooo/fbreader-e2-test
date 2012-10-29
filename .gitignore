@@ -1,6 +1,7 @@
 #ignore binary file and *.o files and library it's too big
 common-lib/*
 !common-lib/lib/*
+!common-lib/include/*
 fbreader/FBReader
 zlibrary/libzlibrary.*
 *.[oa(so)]
