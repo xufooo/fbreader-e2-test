@@ -46,6 +46,7 @@
 #include <ZScrollView.h>
 #include <ZScrollPanel.h>
 #include <ZLabel.h>
+#include <iostream>/*ooo added*/
 
 class MyTabBar : public QTabBar
 {
@@ -190,6 +191,7 @@ void QOptionsDialogTab::close() {
 
 QOptionsDialogTab::QOptionsDialogTab(QWidget *parent) : QWidget(parent) {
 	int space = 10;
+	std::cout<<"ZLDeviceInfo::screenSize():"<<ZLDeviceInfo::screenSize()<<"\n";
 	switch (ZLDeviceInfo::screenSize()) {
 		case ZLDeviceInfo::SIZE_640x480:
 			space = 10;

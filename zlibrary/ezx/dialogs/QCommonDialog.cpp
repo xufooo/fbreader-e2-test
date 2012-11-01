@@ -36,9 +36,11 @@
 
 #include <ZGlobal.h>
 #include <ZPressButton.h>
+#include <iostream>/*ooo added*/
 
 QCommonDialog::QCommonDialog(const std::string &title) :
     ZBaseDialog(qApp->mainWidget(), 0, 1, 0) {
+		std::cout<<"QCommonDialog::QCommonDialog\n";
 	QVBoxLayout *layout = new QVBoxLayout(this);
 	QWidget *widget = new QVBox(this);
 	layout->add(widget);
@@ -85,7 +87,9 @@ void QCommonDialog::addButton(const std::string &text)
 }
 
 bool QCommonDialog::run() {
+	std::cout<<"run??\n";
 	((QOptionsDialogTab*)myTab)->close();
+	setGeometry(0,200,240,320-200);//ooo fixed
 	bool code = exec();
 	return code;
 }

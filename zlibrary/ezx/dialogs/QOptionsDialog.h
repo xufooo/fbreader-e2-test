@@ -32,6 +32,7 @@
 #include "../../abstract/dialogs/ZLOptionsDialog.h"
 
 #include "FullScreenDialog.h"
+#include <iostream>/*ooo added*/
 
 class QTabWidget;
 class QOptionView;
@@ -57,7 +58,8 @@ public:
 #if 1
 	virtual QSize sizeHint() const
 	{
-	    QSize s;// = myLayout->sizeHint();temporarily fix the seg fault
+//		std::cout<<"myLayout->sizeHint():width:"<<myLayout->sizeHint().width()<<";height:"<<myLayout->sizeHint().height()<<"\n";
+	    QSize s;//= myLayout->sizeHint();//ooo temporarily fix the seg fault
 printf("sizeHint: %d %d\n", s.width(), s.height()); fflush(stdout);
             if (s.width() > 240)
 		s.setWidth(240);

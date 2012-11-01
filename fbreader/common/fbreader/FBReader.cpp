@@ -499,6 +499,7 @@ void FBReader::doActionByKey(const std::string &key) {
 }
 
 void FBReader::searchSlot() {
+	std::cout<<"FBReader::searchSlot()\n";//ooo
 	ZLDialog *searchDialog = ZLDialogManager::instance().createDialog("Text search");
 
 	searchDialog->addOption(new ZLSimpleStringOptionEntry("", SearchPatternOption));
@@ -510,7 +511,9 @@ void FBReader::searchSlot() {
 	}
 	searchDialog->addButton("&Go!");
 
+		std::cout<<"searchDialog will run\n";
 	if (searchDialog->run()) {
+		std::cout<<"searchDialog->run()\n";
 		searchDialog->acceptValues();
 		std::string pattern = SearchPatternOption.value();
 		while (!pattern.empty() && isspace(pattern[0])) {
